@@ -138,8 +138,8 @@
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="submit_validate" value="abcd">Login</button>
             <p class="mt-5 mb-3 text-body-secondary">&copy; 2023-<?php echo date("Y") ?></p>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; User : admin1@gmail.com </p>
-            <p class="mt-1 mb-3 text-body-secondary">&copy; Password : password1 </p>
+            <p class="mt-5 mb-3 text-body-secondary">User : admin1@gmail.com </p>
+            <p class="mt-1 mb-3 text-body-secondary">Password : password1 </p>
         </form>
     </main>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

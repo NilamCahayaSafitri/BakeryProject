@@ -320,7 +320,7 @@ while ($record = mysqli_fetch_array($query)) {
 
             ?>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="example">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>

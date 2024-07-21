@@ -1,12 +1,12 @@
 <?php
-    //session_start();
-    if(empty($_SESSION['username_bakery'])){
-        header('location:login');
-    }
+//session_start();
+if (empty($_SESSION['username_bakery'])) {
+    header('location:login');
+}
 
-    include "proses/connect.php";
-    $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_bakery]'");
-    $hasil = mysqli_fetch_array($query);
+include "proses/connect.php";
+$query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username_bakery]'");
+$hasil = mysqli_fetch_array($query);
 
 ?>
 
@@ -20,6 +20,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css.css">
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.0/js/dataTables.js"></script>
 
 </head>
 
@@ -34,10 +38,10 @@
             <!-- End Sidebar -->
 
             <!-- Content -->
-            <?php 
-            
-                include $page;
-            
+            <?php
+
+            include $page;
+
             ?>
             <!-- End Content -->
         </div>
@@ -46,8 +50,7 @@
             Copyright 2024 NilBakery
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (() => {
@@ -69,6 +72,12 @@
             })
         })()
     </script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
 </body>
 
 </html>

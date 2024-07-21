@@ -324,13 +324,15 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                                         <?php echo $row['jumlah'] ?>
                                     </td>
                                     <td>
-                                        <?php 
+                                    <?php 
                                             if($row['status']==1){
                                                 echo "<span class='badge text-bg-warning'>Order dikemas</span>";
                                             }elseif($row['status']==2){
-                                                echo "<span class='badge text-bg-primary'>Order dikirim</span>";
+                                                echo "<span class='badge text-bg-primary'>Order diserahkan kekurir</span>";
                                             }elseif($row['status']==3){
-                                                echo "<span class='badge text-bg-info'>Selesai</span>";
+                                                echo "<span class='badge text-bg-info'>Order dikirim</span>";
+                                            }elseif($row['status']==4){
+                                                echo "<span class='badge text-bg-success'>Selesai</span>";
                                             }
                                         ?>
                                     </td>

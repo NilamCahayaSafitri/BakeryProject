@@ -90,12 +90,12 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                     </div>
                     <!-- Akhir modal Terima Pesanan -->
 
-                    <!-- Modal Kirim Pesanan -->
-                    <div class="modal fade" id="kirim<?php echo $row['id_list_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Modal Siap Pesanan -->
+                    <div class="modal fade" id="siap<?php echo $row['id_list_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-fullscreen-md-down">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Kirim Pesanan Pesanan</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Siap Pesanan</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -142,7 +142,7 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary" name="kirim_orderitem_validate" value="12345">Kirim</button>
+                                            <button type="submit" class="btn btn-primary" name="kirim_orderitem_validate" value="12345">Siap</button>
                                         </div>
                                     </form>
                                 </div>
@@ -150,14 +150,14 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                             </div>
                         </div>
                     </div>
-                    <!-- Akhir modal Kirim Pesanan -->
+                    <!-- Akhir modal Siap Pesanan -->
 
                 <?php
                 }
                 ?>
 
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="example">
                         <thead>
                             <tr class="text-nowrap">
                                 <th scope="col">No</th>
@@ -174,7 +174,7 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                             <?php
                             $no = 1;
                                 foreach ($result as $row) {
-                                    if($row['status'] !=2){
+                                    if($row['status'] !=2 && $row['status'] !=3 && $row['status'] !=4){
                             ?>
                                 <tr>
                                     <td>
@@ -200,9 +200,11 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                                             if($row['status']==1){
                                                 echo "<span class='badge text-bg-warning'>Order dikemas</span>";
                                             }elseif($row['status']==2){
-                                                echo "<span class='badge text-bg-primary'>Order dikirim</span>";
+                                                echo "<span class='badge text-bg-primary'>Order diserahkan kekurir</span>";
                                             }elseif($row['status']==3){
-                                                echo "<span class='badge text-bg-info'>Selesai</span>";
+                                                echo "<span class='badge text-bg-info'>Order dikirim</span>";
+                                            }elseif($row['status']==4){
+                                                echo "<span class='badge text-bg-success'>Selesai</span>";
                                             }
                                         ?>
                                     </td>
@@ -211,7 +213,7 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                                             <button class="<?php echo (!empty($row['status'])) ? "btn btn-secondary btn-sm me-1 disabled" : 
                                             "btn btn-primary btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#terima<?php echo $row['id_list_order'] ?>">Terima</button>
                                             <button class="<?php echo (empty($row['status']) || $row['status'] !=1 ) ? "btn btn-secondary btn-sm me-1 disabled" : 
-                                            "btn btn-success btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#kirim<?php echo $row['id_list_order'] ?>">Kirim</button>
+                                            "btn btn-success btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#siap<?php echo $row['id_list_order'] ?>">Siap</button>
                                         </div>
                                     </td>
                                 </tr>
